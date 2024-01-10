@@ -11,6 +11,8 @@ export function register(e) {
     userName: e.target.userName.value,
     email: e.target.email.value,
     password: hash(e.target.password.value),
+    avatar: "/Images/360_F_408244382_Ex6k7k8XYzTbiXLNJgIL8gssebpLLBZQ.jpg",
+    cart: [],
   };
 
   if (newUser.userName == "" || newUser.email == "") return;

@@ -89,6 +89,18 @@ function decodeToken(token) {
     return false;
   }
 }
+// --------------------------lay email tu token--------------------
+const email = "example@email.com"; // Gán giá trị cho biến email
+
+const token = createToken({ email });
+const decodedData = decodeToken(token);
+
+if (decodedData && decodedData.data && decodedData.data.email) {
+  const decodedEmail = decodedData.data.email;
+  console.log("Email:", decodedEmail);
+} else {
+  console.log("Không tìm thấy email trong token.");
+}
 
 function checkLogin() {
   if (localStorage.getItem("token")) {
