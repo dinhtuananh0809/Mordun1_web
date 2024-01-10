@@ -1,0 +1,30 @@
+.container-footer {
+  p {
+    position: fixed;
+    bottom: 3%;
+    left: 3%;
+    color: aliceblue;
+  }
+}
+
+.footer-icons {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 30px;
+  font-size: 25px;
+  margin-right: 65px;
+
+  a {
+    color: white;
+    &:hover {
+      color: #ec7969;
+      transition: 0.5s linear;
+    }
+  }
+}
