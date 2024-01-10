@@ -2,7 +2,7 @@ document.querySelector(".img__btn").addEventListener("click", function () {
   document.querySelector(".cont").classList.toggle("s--signup");
 });
 import { signInWithGoogle } from "../firebase.js";
-if (checkLogin()) window.location.href = "./index.html";
+if (checkLogin()) window.location.href = "/Login";
 
 export function register(e) {
   e.preventDefault();
@@ -38,6 +38,8 @@ export function login(e) {
     avatar: "/Images/360_F_408244382_Ex6k7k8XYzTbiXLNJgIL8gssebpLLBZQ.jpg",
   };
   let users = JSON.parse(localStorage.getItem("users") || "[]");
+  let loginId = data.loginId; // khởi tạo loginId từ data
+  localStorage.setItem("loginId", loginId);
   let user = users.find(
     (item) => item.email == data.loginId || item.userName == data.loginId
   );

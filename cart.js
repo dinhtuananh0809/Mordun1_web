@@ -1,25 +1,29 @@
 window.onload = displayCart;
 
 function displayCart() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  let listCartItem = ``;
-  for (let i = 0; i < cart.length; i++) {
-    listCartItem += `
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let cart = users.cart ?? [];
+  let carts = cart.map({imageUrl, description, price, quantity}) => {
+    let listCartItem = ``;
+    for (let i = 0; i < carts.length; i++) {
+      listCartItem += `
           <tr>
-            <td><img src="${cart[i].imageUrl}" alt="Product Image" width="auto" height="140px"></td>
-            <td>${cart[i].description}</td>
-            <td>${cart[i].price}</td>
+            <td><img src="${item[i].imageUrl}" alt="Product Image" width="auto" height="140px"></td>
+            <td>${item[i].description}</td>
+            <td>${item[i].price}</td>
            <td> <div>
            <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="increaseQuantity(${i})">+</button>
-          <span style="color: white;">${cart[i].quantity}</span>
+          <span style="color: white;">${item[i].quantity}</span>
           <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="decreaseQuantity(${i})">-</button>
         </div></td>
-           <td><button onclick="removeCart('${cart[i].id}')">Remove</button></td>
+           <td><button onclick="removeCart('${item[i].id}')">Remove</button></td>
           </tr>
         `;
-    document.querySelector("#tbodyCart").innerHTML = listCartItem;
-  }
+      document.querySelector("#tbodyCart").innerHTML = listCartItem.join("");
+    }
+  };
+
+  // console.log(cart, "aaaa");
 }
 
 // -----------------remove items------------------

@@ -89,18 +89,6 @@ function decodeToken(token) {
     return false;
   }
 }
-// --------------------------lay email tu token--------------------
-const email = "example@email.com"; // Gán giá trị cho biến email
-
-const token = createToken({ email });
-const decodedData = decodeToken(token);
-
-if (decodedData && decodedData.data && decodedData.data.email) {
-  const decodedEmail = decodedData.data.email;
-  console.log("Email:", decodedEmail);
-} else {
-  console.log("Không tìm thấy email trong token.");
-}
 
 function checkLogin() {
   if (localStorage.getItem("token")) {
@@ -245,14 +233,33 @@ category.map((item, index) => {
 
 // --------------- add to cart-----------------------------
 
+const users = JSON.parse(localStorage.getItem("users")) ?? [];
+const lowercaseLoginId = localStorage.getItem("loginId").trim();
+
+// console.log(lowercaseLoginId, "a");
+
+const currentUserIndex = users.findIndex((user) => {
+  const userName = user.userName.trim();
+  // console.log(userName);
+  return userName === lowercaseLoginId;
+});
+
+const currentUser = users[currentUserIndex];
+const cart = currentUser.cart ?? [];
+
+function addToLocal() {
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", function () {
-    console.log("Nút đã được nhấp vào với index:", index);
+    // console.log("Nút đã được nhấp vào với index:", index);
     addToCart(index); // Truyền index của sản phẩm bạn muốn thêm vào giỏ hàng
   });
 });
+
 function addToCart(productId) {
   const product = category[productId];
 
@@ -262,18 +269,34 @@ function addToCart(productId) {
       imageUrl: product.imageUrl,
       description: product.description,
       price: product.price,
+      quantity: 1,
     };
-    newProduct.quantity = 1;
 
     cart.push(newProduct);
+    currentUser.cart = cart;
+
+    users[currentUserIndex] = currentUser;
     addToLocal(cart);
 
     window.location.href = "/Cart";
   }
 }
 
-const cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+// function addToCart(productId) {
+//   const product = category[productId];
 
-function addToLocal() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+//   if (product) {
+//     const newProduct = {
+//       id: uuidv4(),
+//       imageUrl: product.imageUrl,
+//       description: product.description,
+//       price: product.price,
+//       quantity: 1,
+//     };
+
+//     cart.push(newProduct);
+//     addToLocal(cart);
+
+//     window.location.href = "/Cart";
+//   }
+// }
