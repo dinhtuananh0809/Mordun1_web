@@ -85,7 +85,7 @@ document
         let user = users.find((item) => item.email == result.user.email);
         let token = createToken(user);
         localStorage.setItem("token", token);
-        window.location.href = "../index.html";
+        window.location.href = "/Login";
       } else {
         //register + login
         let newUser = {
@@ -98,7 +98,7 @@ document
         localStorage.setItem("users", JSON.stringify([...users, newUser]));
         let token = createToken(newUser);
         localStorage.setItem("token", token);
-        window.location.href = "../index.html";
+        window.location.href = "/Login";
       }
       loadEl.classList.remove("active");
       load = false;

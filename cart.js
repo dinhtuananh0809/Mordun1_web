@@ -1,86 +1,123 @@
-window.onload = displayCart;
+// -------------------display cart----------------------------------
 
 function displayCart() {
   let users = JSON.parse(localStorage.getItem("users")) || [];
-  let cart = users.cart ?? [];
-  let carts = cart.map({imageUrl, description, price, quantity}) => {
-    let listCartItem = ``;
-    for (let i = 0; i < carts.length; i++) {
-      listCartItem += `
-          <tr>
-            <td><img src="${item[i].imageUrl}" alt="Product Image" width="auto" height="140px"></td>
-            <td>${item[i].description}</td>
-            <td>${item[i].price}</td>
-           <td> <div>
-           <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="increaseQuantity(${i})">+</button>
-          <span style="color: white;">${item[i].quantity}</span>
-          <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="decreaseQuantity(${i})">-</button>
-        </div></td>
-           <td><button onclick="removeCart('${item[i].id}')">Remove</button></td>
-          </tr>
-        `;
-      document.querySelector("#tbodyCart").innerHTML = listCartItem.join("");
+  let lowercaseLoginId = localStorage.getItem("loginId").trim(); // Đảm bảo đã xác định email người dùng đã đăng nhập
+
+  // Tìm người dùng dựa trên email đã đăng nhập
+  let currentUser = users.find(
+    (user) => user.userName.trim() === lowercaseLoginId
+  );
+
+  if (currentUser) {
+    let cart = currentUser.cart || [];
+    let listCartItem = [];
+
+    for (let item of cart) {
+      listCartItem.push(`
+        <tr>
+          <td><img src="${item.imageUrl}" alt="Product Image" width="auto" height="140px"></td>
+          <td>${item.description}</td>
+          <td>${item.price}</td>
+          <td>
+            <div>
+              <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="increaseQuantity('${item.id}')">+</button>
+              <span style="color: white;">${item.quantity}</span>
+              <button style="color: white; height: 30px; width: 30px; background-color: gray; font-size: 20px; font-weight: 300;" onclick="decreaseQuantity('${item.id}')">-</button>
+            </div>
+          </td>
+          <td><button  onclick="removeCart('${item.id}')"><i  class="fa-solid fa-trash-can-list"></i></button></td>
+        </tr>
+      `);
     }
-  };
 
-  // console.log(cart, "aaaa");
+    document.querySelector("#tbodyCart").innerHTML = listCartItem.join("");
+  }
 }
-
+displayCart();
 // -----------------remove items------------------
-function removeCart(cartId) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// Tăng số lượng sản phẩm trong giỏ hàng
+function increaseQuantity(itemId) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let lowercaseLoginId = localStorage.getItem("loginId").trim();
+  let currentUser = users.find(
+    (user) => user.userName.trim() === lowercaseLoginId
+  );
 
-  let index = cart.findIndex((item) => item.id === cartId);
+  if (currentUser) {
+    let cart = currentUser.cart || [];
+    let itemIndex = cart.findIndex((item) => item.id === itemId);
 
-  if (index !== -1) {
-    cart.splice(index, 1);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    displayCart();
-    totalCart();
+    if (itemIndex !== -1) {
+      cart[itemIndex].quantity++;
+      updateCartAndLocalStorage(users, currentUser);
+      totalCart();
+    }
   }
 }
 
-// ----------------------Increase Quantity---------------------
-function increaseQuantity(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart[index].quantity++;
-  localStorage.setItem("cart", JSON.stringify(cart));
+// Giảm số lượng sản phẩm trong giỏ hàng
+function decreaseQuantity(itemId) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let lowercaseLoginId = localStorage.getItem("loginId").trim();
+  let currentUser = users.find(
+    (user) => user.userName.trim() === lowercaseLoginId
+  );
+
+  if (currentUser) {
+    let cart = currentUser.cart || [];
+    let itemIndex = cart.findIndex((item) => item.id === itemId);
+
+    if (itemIndex !== -1 && cart[itemIndex].quantity > 1) {
+      cart[itemIndex].quantity--;
+      updateCartAndLocalStorage(users, currentUser);
+      totalCart();
+    }
+  }
+}
+
+// Xóa sản phẩm khỏi giỏ hàng
+function removeCart(itemId) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let lowercaseLoginId = localStorage.getItem("loginId").trim();
+  let currentUser = users.find(
+    (user) => user.userName.trim() === lowercaseLoginId
+  );
+
+  if (currentUser) {
+    let cart = currentUser.cart || [];
+    let itemIndex = cart.findIndex((item) => item.id === itemId);
+
+    if (itemIndex !== -1) {
+      cart.splice(itemIndex, 1);
+      updateCartAndLocalStorage(users, currentUser);
+
+      totalCart();
+    }
+  }
+}
+
+// Hàm cập nhật giỏ hàng và lưu trữ vào Local Storage
+function updateCartAndLocalStorage(users, currentUser) {
+  localStorage.setItem("users", JSON.stringify(users));
   displayCart();
-  totalCart();
-}
-
-// ----------------------Decrease Quantity---------------------
-function decreaseQuantity(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart[index].quantity > 1) {
-    cart[index].quantity--;
-    localStorage.setItem("cart", JSON.stringify(cart));
-    displayCart();
-    totalCart();
-  }
 }
 
 // ----------------------Sub Total---------------------
 function totalCart() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let lowercaseLoginId = localStorage.getItem("loginId").trim();
+  let currentUser = users.find(
+    (user) => user.userName.trim() === lowercaseLoginId
+  );
 
-  let subTotal = cart.reduce((total, product) => {
-    if (typeof product.price === "string" && product.price.includes("$")) {
-      return (
-        total + parseFloat(product.price.replace("$", "")) * product.quantity
-      );
-    } else {
-      return total;
-    }
+  let subTotal = currentUser.cart.reduce((total, product) => {
+    return total + parseFloat(product.price) * product.quantity;
   }, 0);
 
   document.querySelector(
     ".cart-total-price p:nth-child(2)"
   ).textContent = `$${subTotal.toFixed(2)}`;
-
-  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 totalCart();

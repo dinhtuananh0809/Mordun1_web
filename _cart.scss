@@ -2,7 +2,7 @@
   h2 {
     text-align: center;
     font-size: 50px;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 50px;
   }
   a {
@@ -11,8 +11,10 @@
     margin-left: 30px;
     margin-bottom: 20px;
     text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
+    font-family: "Questrial", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-weight: 400;
     letter-spacing: 0.2px;
 
     &:hover {
@@ -23,7 +25,7 @@
   // width: 50%;
 
   table {
-    width: 100%;
+    width: 90%;
     margin: 30px;
 
     border-collapse: collapse;
@@ -44,7 +46,7 @@
       }
     }
     thead tr th {
-      font-weight: 700;
+      font-weight: 400;
       text-decoration: underline;
 
       &:first-child {
@@ -53,8 +55,10 @@
     }
     button {
       text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
+      font-family: "Questrial", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      font-weight: 400;
       color: white;
       margin: 10px 25px;
 
@@ -72,19 +76,25 @@
     color: white;
     justify-content: flex-start;
     gap: 20px;
-    font-size: 20px;
+    font-family: "Questrial", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
     margin: 30px;
     font-weight: 700;
+    margin-left: 80%;
   }
 }
+
 .cart-button button {
   color: white;
-  font-size: 20px;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   border: 1px solid white;
-  width: 20%;
-  height: 50px;
-  border-radius: 30px;
-  margin: auto;
+  width: 15%;
+  height: 30px;
+  margin-left: 75%;
+  // margin-left: 20px;
 
   &:hover {
     background-color: #ec7969;

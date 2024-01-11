@@ -264,20 +264,27 @@ function addToCart(productId) {
   const product = category[productId];
 
   if (product) {
-    const newProduct = {
-      id: uuidv4(),
-      imageUrl: product.imageUrl,
-      description: product.description,
-      price: product.price,
-      quantity: 1,
-    };
+    const existingProductIndex = cart.findIndex(
+      (item) => item.description === product.description
+    );
 
-    cart.push(newProduct);
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      const newProduct = {
+        id: uuidv4(),
+        imageUrl: product.imageUrl,
+        description: product.description,
+        price: product.price,
+        quantity: 1,
+      };
+
+      cart.push(newProduct);
+    }
+
     currentUser.cart = cart;
-
     users[currentUserIndex] = currentUser;
-    addToLocal(cart);
-
+    addToLocal(users);
     window.location.href = "/Cart";
   }
 }
