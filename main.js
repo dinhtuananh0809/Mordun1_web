@@ -252,6 +252,7 @@ const cart = currentUser.cart ?? [];
 function addToLocal() {
   localStorage.setItem("users", JSON.stringify(users));
 }
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button, index) => {
@@ -259,22 +260,23 @@ buttons.forEach((button, index) => {
     addToCart(index);
   });
 });
+
 function addToCart(productId) {
   // Lấy danh sách sản phẩm từ Local Storage
-  const category = JSON.parse(localStorage.getItem("category"));
+  let category = JSON.parse(localStorage.getItem("category")) ?? [];
 
   // Tìm sản phẩm cụ thể dựa trên productId
   const product = category[productId];
 
   if (product) {
     // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
-    const existingProductIndex = category.findIndex(
+    const existingProductIndex = cart.findIndex(
       (item) => item.description === product.description
     );
 
     if (existingProductIndex !== -1) {
       // Nếu sản phẩm đã tồn tại, tăng số lượng
-      category[existingProductIndex].quantity += 1;
+      cart[existingProductIndex].quantity += 1;
     } else {
       // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm sản phẩm mới vào mảng
       const newProduct = {
@@ -285,11 +287,15 @@ function addToCart(productId) {
         quantity: 1,
       };
 
-      category.push(newProduct);
+      cart.push(newProduct);
     }
 
-    // Lưu lại danh sách sản phẩm vào Local Storage
-    localStorage.setItem("category", JSON.stringify(category));
+    // Lưu lại danh sách sản phẩm vào giỏ hàng của người dùng hiện tại
+    currentUser.cart = cart;
+
+    // Cập nhật danh sách người dùng vào Local Storage
+    users[currentUserIndex] = currentUser;
+    localStorage.setItem("users", JSON.stringify(users));
 
     // Chuyển đến trang giỏ hàng hoặc thực hiện các tác vụ khác tùy theo yêu cầu của bạn
     window.location.href = "/Cart";
