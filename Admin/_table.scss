@@ -1,0 +1,56 @@
+h2 {
+  font-size: 50px;
+  margin: 20px;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  color: rgb(133, 127, 127);
+}
+.tableData {
+  width: 70%;
+  margin: auto;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 10px;
+  border: 1px solid gray;
+}
+
+#tbodyCart {
+  text-align: center;
+  img {
+    margin: auto;
+  }
+  tr td {
+    width: 20%;
+    text-align: center;
+    padding: 15px 0px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+}
+.tableQuantity {
+  letter-spacing: 8px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-left: 228px;
+  margin-top: 50px;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  color: rgb(133, 127, 127);
+}
+
+.tbodyAdd {
+  text-align: center;
+  img {
+    margin: auto;
+  }
+  tr td {
+    width: 20%;
+    text-align: center;
+    padding: 15px 0px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+  }
+}

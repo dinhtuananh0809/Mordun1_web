@@ -26,26 +26,32 @@
   -o-object-fit: fill;
      object-fit: fill;
 }
-.container-category li {
+
+.container-category-item {
   transition: transform 0.3s ease;
 }
-.container-category li:hover {
+.container-category-item:hover {
   transform: scale(1.1);
 }
-.container-category li button {
-  width: 100px;
+.container-category-item p {
+  color: white;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0px;
+}
+.container-category-item button {
+  width: 40%;
   height: 30px;
-  border: 1px solid white;
-  border-radius: 10px;
-  color: white;
-}
-.container-category li button:hover {
   background-color: #ec7969;
-  color: black;
-  transition: 0.5s linear;
-}
-.container-category li p {
   color: white;
-  font-weight: 700px;
-  margin: 10px;
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.container-category-item button:hover {
+  background-color: black;
+  border: 2px solid #ec7969;
+  color: #ec7969;
+  transition: 0.5s linear;
 }/*# sourceMappingURL=category.css.map */

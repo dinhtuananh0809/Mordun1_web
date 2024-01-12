@@ -106,129 +106,132 @@ function logout() {
   localStorage.removeItem("token");
   window.location.reload();
 }
-let category = [
-  {
-    id: uuidv4(),
-    imageUrl: "../Images/10114-GMCG-front!bggt-big.jpg",
-    description: "Charcoal Gray Suit",
-    price: "200$",
-  },
+// let category = [
+//   {
+//     id: uuidv4(),
+//     imageUrl: "../Images/10114-GMCG-front!bggt-big.jpg",
+//     description: "Charcoal Gray Suit",
+//     quantity: 1,
+//     price: "200$",
+//   },
 
-  {
-    id: uuidv4(),
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/NAVY_BLUE_SUIT__075_0ba78598-6c22-4024-820e-019a5fdb109a_830x1230_crop_center.jpg (1).webp",
-    description: "Men's Navy Blue Suit",
-    price: "199$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl:
+//       "../Images/NAVY_BLUE_SUIT__075_0ba78598-6c22-4024-820e-019a5fdb109a_830x1230_crop_center.jpg (1).webp",
+//     description: "Men's Navy Blue Suit",
+//     quantity: 1,
+//     price: "199$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/LIGHT_BLUE_SUIT_VEST__013_511d5239-7370-4ea1-9c37-b74fa4df9ad4_830x1230_crop_center.jpg.webp",
-    description: "Light Blue Suit Vest",
-    price: "50$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl:
+//       "../Images/LIGHT_BLUE_SUIT_VEST__013_511d5239-7370-4ea1-9c37-b74fa4df9ad4_830x1230_crop_center.jpg.webp",
+//     description: "Light Blue Suit Vest",
+//     quantity: 1,
+//     price: "50$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/CLASSIC_BLACK_TUXEDO_083_ec5edd97-4c19-417e-be20-0c0154d22aca_830x1230_crop_center.jpg.webp",
-    description: "Classic Black Tuxedo",
-    price: "259$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl:
+//       "../Images/CLASSIC_BLACK_TUXEDO_083_ec5edd97-4c19-417e-be20-0c0154d22aca_830x1230_crop_center.jpg.webp",
+//     description: "Classic Black Tuxedo",
+//     quantity: 1,
+//     price: "259$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl: "../Images/MENS_BURGUNDY_EDITED_830x1230_crop_center.jpg.webp",
-    description: "Mens Burgundy Edited",
-    price: "200$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl: "../Images/MENS_BURGUNDY_EDITED_830x1230_crop_center.jpg.webp",
+//     description: "Mens Burgundy Edited",
+//     quantity: 1,
+//     price: "200$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl: "../Images/MENS_TAN_EDITED_830x1230_crop_center.jpg.webp",
-    description: "Mens Tan Edited",
-    price: "200$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl: "../Images/MENS_TAN_EDITED_830x1230_crop_center.jpg.webp",
+//     description: "Mens Tan Edited",
+//     quantity: 1,
+//     price: "200$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl: "../Images/LOOK_8_014_830x1230_crop_center.jpg.webp",
-    description: "Mens Shawl Lapel Navy Tuxedo",
-    price: "259$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl: "../Images/LOOK_8_014_830x1230_crop_center.jpg.webp",
+//     description: "Mens Shawl Lapel Navy Tuxedo",
+//     quantity: 1,
+//     price: "259$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/TEXTURED_GRAY_SUIT__048_5d624da9-c950-440f-9c05-02dd3f358715_830x1230_crop_center.jpg.webp",
-    description: "Tuxedo Gray Suit",
-    price: "259$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl:
+//       "../Images/TEXTURED_GRAY_SUIT__048_5d624da9-c950-440f-9c05-02dd3f358715_830x1230_crop_center.jpg.webp",
+//     description: "Tuxedo Gray Suit",
+//     quantity: 1,
+//     price: "259$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/TEXTURED_GRAY_SUIT_VEST_008_2_830x1230_crop_center.jpg.webp",
-    description: "Tuxedo Gray Suit Vest",
-    price: "50$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl:
+//       "../Images/TEXTURED_GRAY_SUIT_VEST_008_2_830x1230_crop_center.jpg.webp",
+//     description: "Tuxedo Gray Suit Vest",
+//     quantity: 1,
+//     price: "50$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl:
-      "../Images/NAVY_BLUE_SUIT_VEST__013_e57efd0c-f509-4c6e-a543-db171df66e3a_830x1230_crop_center.jpg.webp",
-    description: "Navy Blue Suit Vest",
-    price: "50$",
-  },
+//     imageUrl:
+//       "../Images/NAVY_BLUE_SUIT_VEST__013_e57efd0c-f509-4c6e-a543-db171df66e3a_830x1230_crop_center.jpg.webp",
+//     description: "Navy Blue Suit Vest",
+//     quantity: 1,
+//     price: "50$",
+//   },
 
-  {
-    id: uuidv4(),
+//   {
+//     id: uuidv4(),
 
-    imageUrl: "../Images/Men's Peak Lapel Navy Tuxedo.webp",
-    description: "Men's Peak Lapel Navy Tuxedo",
-    price: "259$",
-  },
-  {
-    id: uuidv4(),
+//     imageUrl: "../Images/Men's Peak Lapel Navy Tuxedo.webp",
+//     description: "Men's Peak Lapel Navy Tuxedo",
+//     quantity: 1,
+//     price: "259$",
+//   },
+//   {
+//     id: uuidv4(),
 
-    imageUrl: "../Images/Men's Teal Suit.webp",
-    description: "Men's Teal Suit",
-    price: "224$",
-  },
-];
+//     imageUrl: "../Images/Men's Teal Suit.webp",
+//     description: "Men's Teal Suit",
+//     quantity: 1,
+//     price: "224$",
+//   },
+// ];
+// localStorage.setItem("category", JSON.stringify(category));
 
-const listCart = document.querySelector(".container-category");
-category.map((item, index) => {
-  // Tạo một thẻ <li> để chứa thông tin sản phẩm
-  const listItem = document.createElement("li");
+const products = JSON.parse(localStorage.getItem("category"));
 
-  // Tạo hình ảnh sản phẩm
-  const productImage = document.createElement("img");
-  productImage.src = item.imageUrl;
-  productImage.alt = item.description;
+// Lặp qua danh sách sản phẩm và hiển thị chúng trong các phần tử HTML
+const container = document.querySelector(".container-category");
 
-  // Tạo mô tả sản phẩm
-  const productDescription = document.createElement("p");
-  productDescription.textContent = item.description;
+products.forEach((product) => {
+  const productItem = document.createElement("div");
+  productItem.classList.add("container-category-item");
 
-  // Tạo giá sản phẩm
-  const productPrice = document.createElement("p");
-  productPrice.textContent = item.price;
+  productItem.innerHTML = `
+    <a href="#">
+      <img src="${product.imageUrl}" alt="${product.description}" />
+    </a>
+    <p id="name">${product.description}</p>
+    <p id="price">Price: ${product.price}</p>
+    <button type="submit" id="buy">Buy</button>
+  `;
 
-  const productButton = document.createElement("button");
-  productButton.textContent = "Buy";
-
-  // Thêm hình ảnh, mô tả và giá vào thẻ <li>
-  listItem.appendChild(productImage);
-  listItem.appendChild(productDescription);
-  listItem.appendChild(productPrice);
-  listItem.appendChild(productButton);
-
-  // Thêm thẻ <li> vào danh sách
-  listCart.appendChild(listItem);
+  container.appendChild(productItem);
 });
 
 // --------------- add to cart-----------------------------
@@ -261,15 +264,17 @@ buttons.forEach((button, index) => {
 });
 
 function addToCart(productId) {
+  const category = JSON.parse(localStorage.getItem("category"));
+
   const product = category[productId];
 
   if (product) {
-    const existingProductIndex = cart.findIndex(
+    const existingProductIndex = category.findIndex(
       (item) => item.description === product.description
     );
 
     if (existingProductIndex !== -1) {
-      cart[existingProductIndex].quantity += 1;
+      category[existingProductIndex].quantity += 1;
     } else {
       const newProduct = {
         id: uuidv4(),
@@ -279,12 +284,11 @@ function addToCart(productId) {
         quantity: 1,
       };
 
-      cart.push(newProduct);
+      category.push(newProduct);
     }
 
-    currentUser.cart = cart;
-    users[currentUserIndex] = currentUser;
-    addToLocal(users);
+    localStorage.setItem("category", JSON.stringify(category));
+
     window.location.href = "/Cart";
   }
 }
