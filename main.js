@@ -11,7 +11,7 @@ function renderHeader(data = null) {
   return `
    <header class="container-header">
         <div class="container-header-navigation">
-       <a href="/HomePage">
+       <a href="/index.html">
   <img
     style="width: 150px; height: 100px"
     src="/Images/juno.png"
@@ -106,112 +106,113 @@ function logout() {
   localStorage.removeItem("token");
   window.location.reload();
 }
-// let category = [
-//   {
-//     id: uuidv4(),
-//     imageUrl: "../Images/10114-GMCG-front!bggt-big.jpg",
-//     description: "Charcoal Gray Suit",
-//     quantity: 1,
-//     price: "200$",
-//   },
+let category = [
+  {
+    id: uuidv4(),
+    imageUrl: "../Images/10114-GMCG-front!bggt-big.jpg",
+    description: "Charcoal Gray Suit",
+    quantity: 1,
+    price: "200$",
+  },
 
-//   {
-//     id: uuidv4(),
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/NAVY_BLUE_SUIT__075_0ba78598-6c22-4024-820e-019a5fdb109a_830x1230_crop_center.jpg (1).webp",
-//     description: "Men's Navy Blue Suit",
-//     quantity: 1,
-//     price: "199$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl:
+      "../Images/NAVY_BLUE_SUIT__075_0ba78598-6c22-4024-820e-019a5fdb109a_830x1230_crop_center.jpg (1).webp",
+    description: "Men's Navy Blue Suit",
+    quantity: 1,
+    price: "199$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/LIGHT_BLUE_SUIT_VEST__013_511d5239-7370-4ea1-9c37-b74fa4df9ad4_830x1230_crop_center.jpg.webp",
-//     description: "Light Blue Suit Vest",
-//     quantity: 1,
-//     price: "50$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl:
+      "../Images/LIGHT_BLUE_SUIT_VEST__013_511d5239-7370-4ea1-9c37-b74fa4df9ad4_830x1230_crop_center.jpg.webp",
+    description: "Light Blue Suit Vest",
+    quantity: 1,
+    price: "50$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/CLASSIC_BLACK_TUXEDO_083_ec5edd97-4c19-417e-be20-0c0154d22aca_830x1230_crop_center.jpg.webp",
-//     description: "Classic Black Tuxedo",
-//     quantity: 1,
-//     price: "259$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl:
+      "../Images/CLASSIC_BLACK_TUXEDO_083_ec5edd97-4c19-417e-be20-0c0154d22aca_830x1230_crop_center.jpg.webp",
+    description: "Classic Black Tuxedo",
+    quantity: 1,
+    price: "259$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl: "../Images/MENS_BURGUNDY_EDITED_830x1230_crop_center.jpg.webp",
-//     description: "Mens Burgundy Edited",
-//     quantity: 1,
-//     price: "200$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl: "../Images/MENS_BURGUNDY_EDITED_830x1230_crop_center.jpg.webp",
+    description: "Mens Burgundy Edited",
+    quantity: 1,
+    price: "200$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl: "../Images/MENS_TAN_EDITED_830x1230_crop_center.jpg.webp",
-//     description: "Mens Tan Edited",
-//     quantity: 1,
-//     price: "200$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl: "../Images/MENS_TAN_EDITED_830x1230_crop_center.jpg.webp",
+    description: "Mens Tan Edited",
+    quantity: 1,
+    price: "200$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl: "../Images/LOOK_8_014_830x1230_crop_center.jpg.webp",
-//     description: "Mens Shawl Lapel Navy Tuxedo",
-//     quantity: 1,
-//     price: "259$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl: "../Images/LOOK_8_014_830x1230_crop_center.jpg.webp",
+    description: "Mens Shawl Lapel Navy Tuxedo",
+    quantity: 1,
+    price: "259$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/TEXTURED_GRAY_SUIT__048_5d624da9-c950-440f-9c05-02dd3f358715_830x1230_crop_center.jpg.webp",
-//     description: "Tuxedo Gray Suit",
-//     quantity: 1,
-//     price: "259$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl:
+      "../Images/TEXTURED_GRAY_SUIT__048_5d624da9-c950-440f-9c05-02dd3f358715_830x1230_crop_center.jpg.webp",
+    description: "Tuxedo Gray Suit",
+    quantity: 1,
+    price: "259$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/TEXTURED_GRAY_SUIT_VEST_008_2_830x1230_crop_center.jpg.webp",
-//     description: "Tuxedo Gray Suit Vest",
-//     quantity: 1,
-//     price: "50$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl:
+      "../Images/TEXTURED_GRAY_SUIT_VEST_008_2_830x1230_crop_center.jpg.webp",
+    description: "Tuxedo Gray Suit Vest",
+    quantity: 1,
+    price: "50$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl:
-//       "../Images/NAVY_BLUE_SUIT_VEST__013_e57efd0c-f509-4c6e-a543-db171df66e3a_830x1230_crop_center.jpg.webp",
-//     description: "Navy Blue Suit Vest",
-//     quantity: 1,
-//     price: "50$",
-//   },
+    imageUrl:
+      "../Images/NAVY_BLUE_SUIT_VEST__013_e57efd0c-f509-4c6e-a543-db171df66e3a_830x1230_crop_center.jpg.webp",
+    description: "Navy Blue Suit Vest",
+    quantity: 1,
+    price: "50$",
+  },
 
-//   {
-//     id: uuidv4(),
+  {
+    id: uuidv4(),
 
-//     imageUrl: "../Images/Men's Peak Lapel Navy Tuxedo.webp",
-//     description: "Men's Peak Lapel Navy Tuxedo",
-//     quantity: 1,
-//     price: "259$",
-//   },
-//   {
-//     id: uuidv4(),
+    imageUrl: "../Images/Men's Peak Lapel Navy Tuxedo.webp",
+    description: "Men's Peak Lapel Navy Tuxedo",
+    quantity: 1,
+    price: "259$",
+  },
+  {
+    id: uuidv4(),
 
-//     imageUrl: "../Images/Men's Teal Suit.webp",
-//     description: "Men's Teal Suit",
-//     quantity: 1,
-//     price: "224$",
-//   },
-// ];
-// localStorage.setItem("category", JSON.stringify(category));
+    imageUrl: "../Images/Men's Teal Suit.webp",
+    description: "Men's Teal Suit",
+    quantity: 1,
+    price: "224$",
+  },
+];
+if (!localStorage.getItem("category"))
+  localStorage.setItem("category", JSON.stringify(category));
 
 const products = JSON.parse(localStorage.getItem("category"));
 

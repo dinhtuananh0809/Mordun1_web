@@ -3,12 +3,12 @@ function changeToCategory() {
     window.location.href = "/Category";
   } else {
     alert("đăng nhập trc khi vào");
-    window.location.href = "/HomePage";
+    window.location.href = "./index.html";
   }
 }
 
 function changeToHome() {
-  window.location.href = "/HomePage";
+  window.location.href = "/index.html";
 }
 
 function changeToAbout() {
@@ -24,7 +24,7 @@ function changeToCart() {
     window.location.href = "/Cart";
   } else {
     alert("đăng nhập trc khi vào");
-    window.location.href = "/HomePage";
+    window.location.href = "./index.html";
   }
 }
 

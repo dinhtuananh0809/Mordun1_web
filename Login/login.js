@@ -2,7 +2,7 @@ document.querySelector(".img__btn").addEventListener("click", function () {
   document.querySelector(".cont").classList.toggle("s--signup");
 });
 import { signInWithGoogle } from "../firebase.js";
-if (checkLogin()) window.location.href = "../HomePage";
+if (checkLogin()) window.location.href = "/index.html";
 
 export function register(e) {
   e.preventDefault();
@@ -53,43 +53,25 @@ export function login(e) {
   // } else {
   //   alert("mời bạn đăng nhập tài khoản khác");
   // }
-  let admin = users.find(
-    (item) => item.password == "123456" && item.userName == "admin"
-  );
 
   let user = users.find(
     (item) => item.email == data.loginId || item.userName == data.loginId
   );
 
-  if (admin) {
-    // Nếu tìm thấy, chuyển đến trang admin
-    window.location.href = "/Admin";
+  if (!user) {
+    alert("Tài khoản không tồn tại");
     return;
-  } else if (!user && hash(data.password) != user.password) {
-    // Nếu tìm thấy người dùng hợp lệ, tạo token và chuyển đến trang HomePage
-    alert("Tài khoản hoặc mật khẩu không đúng");
-    return;
-  } else {
-    // Nếu không tìm thấy thông tin đăng nhập hợp lệ, hiển thị thông báo lỗi
-    let token = createToken(user);
-    localStorage.setItem("token", token);
-    window.location.href = "/HomePage";
   }
 
-  // if (!user) {
-  //   alert("Tài khoản không tồn tại");
-  //   return;
-  // }
+  if (hash(data.password) != user.password) {
+    alert("Mật khẩu không chính xác");
+    return;
+  }
 
-  // if (hash(data.password) != user.password) {
-  //   alert("Mật khẩu không chính xác");
-  //   return;
-  // }
-
-  // // console.log("user", JSON.stringify(user));
-  // let token = createToken(user);
-  // localStorage.setItem("token", token);
-  // window.location.href = "/HomePage";
+  // console.log("user", JSON.stringify(user));
+  let token = createToken(user);
+  localStorage.setItem("token", token);
+  window.location.href = "/index.html";
 }
 
 document.getElementById("formSignIn").addEventListener("submit", (e) => {
