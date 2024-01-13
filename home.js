@@ -2,7 +2,7 @@ function changeToCategory() {
   if (localStorage.getItem("token")) {
     window.location.href = "/Category";
   } else {
-    alert("đăng nhập trc khi vào");
+    alert("U need sign in before buy something");
     window.location.href = "./index.html";
   }
 }
@@ -23,7 +23,7 @@ function changeToCart() {
   if (localStorage.getItem("token")) {
     window.location.href = "/Cart";
   } else {
-    alert("đăng nhập trc khi vào");
+    alert("U need sign in before buy something");
     window.location.href = "./index.html";
   }
 }

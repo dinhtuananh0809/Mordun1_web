@@ -11,18 +11,10 @@ function decodeToken(token) {
   }
 }
 
-let token = localStorage.getItem("token");
-console.log(token);
-
-if (token) {
-  let decodedData = decodeToken(token);
-
-  if (decodedData.userName === "admin") {
-    window.location.href = "/Admin";
-  } else {
-    window.location.href = "./index.html";
+if (localStorage.getItem("token")) {
+  if (decodeToken(localStorage.getItem("token")).data.userName != "admin") {
+    window.location.href = "/";
   }
 } else {
-  alert("Vui lòng đăng nhập để truy cập trang.");
-  window.location.href = "/Login";
+  window.location.href = "/";
 }

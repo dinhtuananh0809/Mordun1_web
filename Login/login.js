@@ -71,7 +71,11 @@ export function login(e) {
   // console.log("user", JSON.stringify(user));
   let token = createToken(user);
   localStorage.setItem("token", token);
-  window.location.href = "/index.html";
+  if (user.userName == "admin") {
+    window.location.href = "/admin";
+  } else {
+    window.location.href = "/index.html";
+  }
 }
 
 document.getElementById("formSignIn").addEventListener("submit", (e) => {
